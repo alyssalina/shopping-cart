@@ -1,4 +1,4 @@
-const cartButtons = $('button');
+const cartButtons = $('.itembutton');
 
 const orderItems = [
   // Empty Order Items Thing!
@@ -31,6 +31,7 @@ cartButtons.on('click',function(event){
   $('.cart').append('<p>');
   $('.cart').append('Total: $' + total.toFixed(2));
   $('.cart').append('<p>');
+  $('.cart').append('<button>Check out!</button>')
   console.log(total);    
 
 });
