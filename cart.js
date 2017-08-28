@@ -1,12 +1,10 @@
 const cartButtons = $('button');
 
-const shoppingcart = $('#cart')
-
 const orderItems = [
   // Empty Order Items Thing!
 ];
 
-var total = 0.00
+
 
 cartButtons.on('click',function(event){
   var name1 = $(this).attr('name');
@@ -19,10 +17,20 @@ cartButtons.on('click',function(event){
     $('.cart').append(orderItems[i].price + " --- " + orderItems[i].name);
     $('.cart').append('</p>');
   };
+  subtotal = 0.00    
   for (var i=0; i <orderItems.length; i++){
-    total = total + parseFloat(orderItems[i].price);
-  
+    subtotal = subtotal + parseFloat(orderItems[i].price);
   };
+  var tax = subtotal * .10
+  tax = parseFloat(tax.toFixed(2))
+  var total = subtotal + tax
+
+  $('.cart').append('Subtotal: $' + subtotal.toFixed(2));
+  $('.cart').append('<p>');
+  $('.cart').append('Tax: $' + tax.toFixed(2));
+  $('.cart').append('<p>');
+  $('.cart').append('Total: $' + total.toFixed(2));
+  $('.cart').append('<p>');
   console.log(total);    
 
 });
